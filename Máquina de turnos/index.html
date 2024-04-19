@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="./src/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="turno-display">
+        <h1 class="numero-turno" id="numero-turno">01</h1>
+        <p class="texto-turno" id="texto-turno">
+          Por favor, acérquese al mostrador
+        </p>
+      </div>
+      <div class="cambiador-turnos">
+        <img
+          src="/src/img/left-arrow.svg"
+          alt="Imnagen de flecha apuntando a la izquierda"
+          class="flechaIzq"
+          id="flechaIzq"
+        />
+        <img
+          src="/src/img/left-arrow.svg"
+          alt="Imnagen de flecha apuntando a la izquierda"
+          class="flechaDer"
+          id="flechaDer"
+        />
+        <div class="editar-turno">
+          <label>Escribe turno y pulsa INTRO:</label>
+          <input
+            type="number"
+            class="input-turnos"
+            id="input-turnos"
+            min="1"
+            max="99"
+            value=""
+          />
+          <button class="reset" id="reset-button">RESET</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
