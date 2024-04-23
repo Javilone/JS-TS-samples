@@ -9,6 +9,7 @@
   </head>
   <body>
     <div id="app">
+      <audio src="src/sounds/shuffling.mp3" autoplay></audio>
       <h1 class="game-title">SIETE &frac12;</h1>
       <h2 class="score" id="score">Puntuación:</h2>
       <div class="option-menu">
@@ -90,17 +91,49 @@
         </div>
         <div class="play-board" id="play-board"></div>
       </div>
-      <div class="gameOverOff" id="gameOver">
+      <div class="gameOverPanelOff" id="gameOver">
         <p>¡GAME OVER!</p>
         <button class="newGame-button" id="newGame-button-B">
           Nueva Partida
         </button>
       </div>
-      <div class="gameOverOff" id="mePlanto">
-        <p id="textoPlantarse"></p>
+      <div class="giveUpPanelOff" id="mePlanto">
+        <p class="giveUpText" id="textoPlantarse"></p>
         <button class="newGame-button" id="newGame-button-C">
           Nueva Partida
         </button>
+        <p class="whatIfText">
+          ¿Quieres saber qué habría pasado en la siguiente jugada?
+        </p>
+        <button class="newGame-button" id="whatIf">Probar a ver</button>
+      </div>
+      <div id="musicBar" class="musicBar">
+        <img
+          id="musicIcon"
+          class="musicIcon"
+          src="src/musicIcon.svg"
+          alt="music icon"
+        />
+        <p>
+          <a
+            href="https://www.freepik.es/foto-gratis/fondo-textura-cuero-negro-original_15340308.htm#fromView=search&page=1&position=1&uuid=3897c2e2-3f04-43ad-aa2d-6337e1b48983"
+            alt="_blank"
+            >Imagen de fondo en Freepik</a
+          >
+        </p>
+        <p>
+          Sound Effect by
+          <a
+            href="https://pixabay.com/es/users/ncone-34430863/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=192098"
+            >Sean Mendoza</a
+          >
+          from
+          <a
+            href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=192098"
+            >Pixabay</a
+          >
+        </p>
+        <p>Creado con ❤️ por Javier López Lara</p>
       </div>
     </div>
     <script type="module" src="/src/main.ts"></script>

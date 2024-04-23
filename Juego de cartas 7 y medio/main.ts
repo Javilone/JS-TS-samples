@@ -7,6 +7,7 @@ let playerScore: number = 0;
 const scoreDisplay = document.getElementById("score") as HTMLHeadingElement;
 const cardBoard = document.getElementById("card-board") as HTMLDivElement;
 const playBoard = document.getElementById("play-board") as HTMLDivElement;
+const gameOverPanel = document.getElementById("mePlanto") as HTMLDivElement;
 const shuffleButton = document.getElementById(
   "shuffle-button"
 ) as HTMLButtonElement;
@@ -17,6 +18,16 @@ const plantarse = document.getElementById("giveUp-button") as HTMLButtonElement;
 const newGameButton = document.getElementById(
   "newGame-button"
 ) as HTMLButtonElement;
+const whatIfButton = document.getElementById("whatIf") as HTMLButtonElement;
+const musicIcon = document.getElementById("musicIcon") as HTMLImageElement;
+
+const shuffling = new Audio("/src/sounds/shuffling.mp3");
+const flipCard = new Audio("/src/sounds/flipcard.mp3");
+const gameOff = new Audio("/src/sounds/gameoff.mp3");
+const positiveA = new Audio("/src/sounds/positiveA.mp3");
+const positiveB = new Audio("/src/sounds/positiveB.mp3");
+const positiveC = new Audio("/src/sounds/positiveC.mp3");
+const music = new Audio("/src/sounds/gameMusic.mp3");
 
 // Obtengo cada carta y su valor
 const barajaCopas: {
@@ -109,6 +120,7 @@ function muestraCarta(cartaAleatoria: Carta, claveAleatoria: string) {
   showCard.classList.add("played-card");
 
   playBoard.appendChild(showCard);
+  flipCard.play();
 
   // Actualizo la puntuación de la carta
   playerScore += cartaAleatoria.valor;
@@ -140,14 +152,18 @@ function shuffle() {
   //Asi obligo al navegador a reiniciar la animación
   cardBoard.offsetWidth;
   cardBoard.classList.add("card-board");
+  shuffling.play();
 }
 
 // Esta función termina el juego y deshabilita los botones
 function gameOver() {
+  gameOff.play();
+  music.pause();
   shuffleButton.disabled = true;
   giveMeButton.disabled = true;
+  plantarse.disabled = true;
   const gameOverDiv = document.getElementById("gameOver") as HTMLDivElement;
-  gameOverDiv.classList.add("gameOverOn");
+  gameOverDiv.classList.add("gameOverPanelOn");
 
   const newGameButton2 = document.getElementById(
     "newGame-button-B"
@@ -158,12 +174,13 @@ function gameOver() {
 /* mePlanto sirve para terminar el juego donde te hayas quedado 
 y además muestra algunas opciones */
 function mePlanto() {
-  // desactivo botones
+  // desactivo botones y música
   shuffleButton.disabled = true;
   giveMeButton.disabled = true;
+  music.pause();
   // obtengo elementos
   const plantarseDiv = document.getElementById("mePlanto") as HTMLDivElement;
-  plantarseDiv.classList.add("gameOverOn");
+  plantarseDiv.classList.add("giveUpPanelOn");
 
   const texto = document.getElementById(
     "textoPlantarse"
@@ -175,13 +192,17 @@ function mePlanto() {
   newGameButton3.addEventListener("click", newGame);
 
   // mensajes condicionados
-  if (playerScore < 4) {
+  if (playerScore <= 4.5) {
+    positiveC.play();
     texto.innerHTML = `Has sido muy conservador.<br>Te has plantado con ${playerScore} puntos.`;
-  } else if (playerScore === 5) {
+  } else if (playerScore === 5 || playerScore === 5.5) {
+    positiveC.play();
     texto.innerHTML = `Te ha entrado el canguelo, ¿eh?<br>Te has plantado con ${playerScore} puntos.`;
-  } else if (playerScore === 6 || playerScore === 7) {
+  } else if (playerScore >= 6 && playerScore <= 7) {
+    positiveB.play();
     texto.innerHTML = `Casi casi...<br>Te has plantado con ${playerScore} puntos.`;
   } else if (playerScore === 7.5) {
+    positiveA.play();
     texto.innerHTML = `¡Lo has clavado! ¡Enhorabuena!<br>Te has plantado con ${playerScore} puntos.`;
   }
 }
@@ -190,9 +211,45 @@ function newGame() {
   location.reload();
 }
 
+function whatIf() {
+  const clavesBaraja = Object.keys(barajaCopas);
+  const indiceAleatorio = Math.floor(Math.random() * clavesBaraja.length);
+  const claveAleatoria = clavesBaraja[indiceAleatorio];
+  const cartaAleatoria = barajaCopas[claveAleatoria];
+
+  const showCard = document.createElement("img");
+  showCard.src = cartaAleatoria.imagen.src;
+  showCard.alt = cartaAleatoria.imagen.alt;
+  showCard.classList.add("whatIfCard");
+
+  const whatIfText = document.createElement("p");
+  whatIfText.classList.add("whatIfText");
+  whatIfText.innerHTML = `Pues que hubieses sacado un: `;
+
+  gameOverPanel.appendChild(whatIfText);
+  gameOverPanel.appendChild(showCard);
+  eliminarCarta(cartaAleatoria, claveAleatoria);
+
+  whatIfButton.disabled = true;
+  flipCard.play();
+}
+
+function playMusic() {
+  if (music.paused) {
+    music.play();
+    music.volume = 1;
+    music.loop = true;
+  } else {
+    music.pause();
+  }
+}
+
 // Carga la puntuación en cuanto ha cargado el DOM.
 document.addEventListener("DOMContentLoaded", muestraPuntuacion);
 shuffleButton.addEventListener("click", shuffle);
 giveMeButton.addEventListener("click", dameCarta);
 plantarse.addEventListener("click", mePlanto);
 newGameButton.addEventListener("click", newGame);
+whatIfButton.addEventListener("click", whatIf);
+musicIcon.addEventListener("click", playMusic);
+playMusic();
