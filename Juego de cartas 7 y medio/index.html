@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/style.css" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1 class="game-title">SIETE &frac12;</h1>
+      <h2 class="score" id="score">Puntuación:</h2>
+      <div class="option-menu">
+        <button class="newGame-button" id="newGame-button">
+          Nueva Partida
+        </button>
+        <button class="shuffle-button" id="shuffle-button">Barajar</button>
+        <button class="giveMe-button" id="giveMe-button">Pedir carta</button>
+        <button class="giveUp-button" id="giveUp-button">Plantarse</button>
+      </div>
+      <div class="board">
+        <div class="card-board" id="card-board">
+          <img
+            class="carta"
+            id="uno-copa"
+            src="https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/1_as-copas.jpg"
+            alt="Carta as de copas"
+          />
+          <img
+            class="carta"
+            id="dos-copa"
+            src="https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/2_dos-copas.jpg"
+            alt="Carta dos de copas"
+          />
+          <img
+            class="carta"
+            id="tres-copa"
+            src="https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/3_tres-copas.jpg"
+            alt="Carta tres de copas"
+          />
+          <img
+            class="carta"
+            id="cuatro-copa"
+            src="https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/4_cuatro-copas.jpg"
+            alt="Carta cuatro de copas"
+          />
+          <img
+            class="carta"
+            id="cinco-copa"
+            src="https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/5_cinco-copas.jpg"
+            alt="Carta cinco de copas"
+          />
+          <img
+            class="carta"
+            id="seis-copa"
+            src="https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/6_seis-copas.jpg"
+            alt="Carta seis de copas"
+          />
+          <img
+            class="carta"
+            id="siete-copa"
+            src="https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/7_siete-copas.jpg"
+            alt="Carta siete de copas"
+          />
+          <img
+            class="carta"
+            id="sota-copa"
+            src="https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/10_sota-copas.jpg"
+            alt="Carta sota de copas"
+          />
+          <img
+            class="carta"
+            id="caballo-copa"
+            src="https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/11_caballo-copas.jpg"
+            alt="Carta caballo de copas"
+          />
+          <img
+            class="carta"
+            id="rey-copa"
+            src="https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/copas/12_rey-copas.jpg"
+            alt="Carta rey de copas"
+          />
+          <img
+            class="carta"
+            id="boca-abajo"
+            src="https://raw.githubusercontent.com/Lemoncode/fotos-ejemplos/main/cartas/back.jpg"
+            alt="Carta boca abajo"
+          />
+        </div>
+        <div class="play-board" id="play-board"></div>
+      </div>
+      <div class="gameOverOff" id="gameOver">
+        <p>¡GAME OVER!</p>
+        <button class="newGame-button" id="newGame-button-B">
+          Nueva Partida
+        </button>
+      </div>
+      <div class="gameOverOff" id="mePlanto">
+        <p id="textoPlantarse"></p>
+        <button class="newGame-button" id="newGame-button-C">
+          Nueva Partida
+        </button>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

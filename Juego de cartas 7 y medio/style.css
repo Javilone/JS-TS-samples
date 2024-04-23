@@ -1,0 +1,209 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 80vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vanilla:hover {
+  filter: drop-shadow(0 0 2em #3178c6aa);
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+button {
+  width: 180px;
+  border-radius: 8px;
+  border: 1px solid rgb(77, 32, 0);
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 700;
+  font-family: inherit;
+  background-color: #ffffff;
+  color: rgb(77, 32, 0);
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  color: white;
+  background-color: rgb(77, 32, 0);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* MIS ESTILOS PROPIOS DE PROYECTO */
+
+.game-title {
+  width: 100%;
+  text-align: center;
+  font-size: 6rem;
+}
+
+.score {
+  width: 50%;
+  margin: -50px auto 10px auto;
+  padding: 5px 0;
+  text-align: center;
+  border-top: 1px solid rgb(0, 255, 34);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.option-menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  width: 100%;
+  padding: 20px 0 20px 0;
+  background-color: rgb(0, 120, 0);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border: 2px solid white;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  width: 100%;
+  height: 400px;
+  padding-top: 100px;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(83, 61, 22) 10%,
+    transparent
+  );
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+}
+
+.card-board {
+  animation-name: barajar;
+  animation-duration: 0.2s;
+  animation-iteration-count: 12;
+}
+
+.carta {
+  width: 175px;
+  margin-right: -174px;
+  transform: rotate3d(0, 0, 1, 20deg);
+  border-radius: 15px;
+}
+
+@keyframes barajar {
+  0% {
+    transform: rotate3d(22, -1, 12, 40deg);
+  }
+  50% {
+    transform: translate3d(5px, 5px, 5px);
+  }
+  100% {
+    transform: rotate3d(-30, -60, 12, 20deg);
+  }
+}
+
+.played-card {
+  width: 175px;
+  margin-right: -145px;
+  transform: rotate3d(0, 0, 1, 20deg);
+  border-radius: 15px;
+}
+
+.gameOverOff {
+  display: none;
+}
+
+.gameOverOn {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 750px;
+  height: 370px;
+  padding: 0 50px;
+  background-color: rgba(255, 255, 255, 0.67);
+  border-radius: 20px;
+  border: 2px solid white;
+  color: red;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 48px;
+  display: block;
+}
+
+.gameOverOn > button {
+  width: 160px;
+  height: 50px;
+  font-size: 16px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
